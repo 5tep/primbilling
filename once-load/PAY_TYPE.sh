@@ -22,7 +22,7 @@ FIELDS TERMINATED BY ';'
 OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
-    kassa_type;
+    money_type; -- kassa_type
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

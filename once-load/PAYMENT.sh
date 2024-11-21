@@ -48,7 +48,7 @@ SELECT
 UNION ALL
 SELECT 
     83 AS PAYMENT_TYPE,  -- Задано статически
-    m.type AS PAY_TYPE_ID,
+    mt.id AS PAY_TYPE_ID,
     m.datetime AS PAYMENT_DATE,
     m.summa AS AMOUNT,
     '' AS AMOUNT_CURRENCY,  -- Пустое поле
@@ -92,10 +92,8 @@ FIELDS TERMINATED BY ';'
 OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
-    money m, users u
-LEFT JOIN 
-    realname n ON n.login = u.login
-WHERE p.login = u.login AND p.cashtypeid in (3);
+    money m, mony_type mt
+WHERE m.type = mt.name AND mt.active = 1;
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

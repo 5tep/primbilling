@@ -19,7 +19,7 @@ SELECT DISTINCT
     s.datetime_start AS ACTUAL_FROM, -- Дата заключения контракта
     '2049-12-31 23:59:59' AS ACTUAL_TO, -- Статическая дата окончания
     CASE 
-        WHEN s.paket = 10 THEN 43
+        WHEN s.packet = 10 THEN 43
         ELSE 42
     END AS ABONENT_TYPE, -- Статическое значение типа абонента
     1 NAME_INFO_TYPE, -- Поле пустое
@@ -52,7 +52,7 @@ OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
    services_used s, cms_operators u
-WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.paket not in (64, 27, 10);
+WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.packet not in (64, 27, 10);
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

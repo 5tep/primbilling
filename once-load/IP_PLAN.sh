@@ -1,9 +1,6 @@
 # Получение текущей даты
 current_date=$(date +%Y%m%d_%H%M)
 
-# Формирование пустые данные в файл
-echo "DESCRIPTION;IP_TYPE;IPV4;IPV6;IP_MASK_TYPE;IPV4_MASK;IPV6_MASK;BEGIN_TIME;END_TIME;REGION_ID" > /home/boss/COPM/files/IP_PLAN_$current_date.txt
-
 # Формирование MySQL-запроса с выводом в файл
 echo "
 SELECT 

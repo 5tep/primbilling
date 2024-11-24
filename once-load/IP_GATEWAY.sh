@@ -15,7 +15,10 @@ UNION ALL
 SELECT 
     d.id AS GATE_ID, 
     0 AS IP_TYPE,
-    h.ip AS IPV4,
+    CONCAT(LPAD(HEX(SUBSTRING_INDEX(h.ip, '.', 1)*1), 2, 0),
+    LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 2), '.', -1)*1), 2, 0),
+    LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 3), '.', 3), '.', -1)*1), 2, 0),
+    LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 4), '.', 4), '.', 4), '.', -1)*1), 2, 0)) AS IPV4,
     '' AS IPV6,
     h.port AS IP_PORT,
     6 AS REGION_ID                        -- Статическое значение для региона

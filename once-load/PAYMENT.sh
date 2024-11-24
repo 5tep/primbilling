@@ -92,7 +92,7 @@ FIELDS TERMINATED BY ';'
 OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
-    money m, mony_type mt
+    money m, money_type mt
 WHERE m.type = mt.name AND mt.active = 1;
 " > /var/lib/mysql-files/query.sql
 
@@ -100,5 +100,5 @@ WHERE m.type = mt.name AND mt.active = 1;
 mysql -u bitfan -p prim_billing < /var/lib/mysql-files/query.sql
 
 # Перенос файлов, подчищаем за собой
-mv -f /var/lib/mysql-files/PAY_TYPE* /home/user/COPM/files
+mv -f /var/lib/mysql-files/PAYMENT* /home/user/COPM/files
 rm -f /var/lib/mysql-files/query.sql

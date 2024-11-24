@@ -15,7 +15,7 @@ UNION ALL
 SELECT 
     s.id AS ID,
     s.packet_name AS MNEMONIC,
-    s.datetime_start AS BEGIN_TIME,
+    CONCAT(s.datetime_start, ' 00:00:00') AS BEGIN_TIME,
     '2049-12-31 23:59:59' AS END_TIME,
     s.packet_name AS DESCRIPTION,
     6 AS REGION_ID2
@@ -25,7 +25,7 @@ OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
   services_used s
-WHERE s.datetime_stop = '0000-00-00' and s.paket not in (64, 27, 10);
+WHERE s.datetime_stop = '0000-00-00' and s.packet not in (64, 27, 10) and s.packet_name != '';
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

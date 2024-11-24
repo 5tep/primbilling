@@ -41,8 +41,11 @@ SELECT
     '' AS BUILDING,                        -- Статическое значение для здания
     '' AS BUILD_SECT,                    -- Статическое значение для секции здания
     '' AS APARTMENT,                        -- Пустое значение для квартиры
-    d.unstruct_info AS UNSTRUCT_INFO,           
-    8 AS REGION_ID                        -- Статическое значение для региона
+    CASE WHEN d.unstruct_info = ''
+      THEN d.address 
+      ELSE d.unstruct_info
+      END AS UNSTRUCT_INFO,           
+    6 AS REGION_ID                        -- Статическое значение для региона
 INTO OUTFILE '/var/lib/mysql-files/GATEWAYS_$current_date.txt'
 FIELDS TERMINATED BY ';' 
 OPTIONALLY ENCLOSED BY ''

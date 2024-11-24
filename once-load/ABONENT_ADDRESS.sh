@@ -33,7 +33,7 @@ SELECT DISTINCT
     '' AS REGION,    -- Регион из таблицы улиц
     '' AS ZONE,            -- Пустое поле, значение не указано
     '' AS CITY,  -- Статическое значение для города
-    '' END  AS STREET,  -- Название улицы из таблицы p_street
+    '' AS STREET,  -- Название улицы из таблицы p_street
     '' AS BUILDING,  -- Номер здания из таблицы dopvalues
     '' AS BUILD_SECT,  -- Секция здания из таблицы dopvalues
     '' AS APARTMENT,  -- Номер квартиры из таблицы dopvalues
@@ -48,7 +48,7 @@ OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
    services_used s, cms_operators u
-WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.paket not in (64, 27, 10);
+WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.packet not in (64, 27, 10);
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

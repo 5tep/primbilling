@@ -70,7 +70,7 @@ OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
   hosts h, devices d, services_used s, cms_operators u
-WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.paket not in (64, 27, 10)  and u.id = h.user and d.id = h.device;
+WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.packet not in (64, 27, 10)  and u.id = h.user and d.id = h.device;
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

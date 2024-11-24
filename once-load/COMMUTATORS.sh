@@ -4,21 +4,7 @@ current_date=$(date +%Y%m%d_%H%M)
 # Формирование MySQL-запроса с выводом в файл
 
 echo "
-SELECT 
-    'ID' AS ID,
-    'MNEMONIC' AS MNEMONIC,
-    'BEGIN_TIME' AS BEGIN_TIME,
-    'END_TIME' AS END_TIME,
-    'DESCRIPTION' AS DESCRIPTION,
-    'REGION_ID' AS REGION_ID
-UNION ALL
-SELECT 
-    s.id AS ID,
-    s.packet_name AS MNEMONIC,
-    s.datetime_start AS BEGIN_TIME,
-    '2049-12-31 23:59:59' AS END_TIME,
-    s.packet_name AS DESCRIPTION,
-    6 AS REGION_ID2SELECT 
+SELECT
     'SWITCH_ID', 
     'BEGIN_TIME',      
     'END_TIME',        
@@ -60,7 +46,7 @@ SELECT
     '' AS APARTMENT,                        -- Пустое значение для квартиры
     d.unstruct_info AS UNSTRUCT_INFO,                    -- Пустое значение для дополнительной информации
     '' AS SWITCH_SIGN,                       
-    8 AS REGION_ID                        -- Статическое значение для региона
+    6 AS REGION_ID                        -- Статическое значение для региона
 INTO OUTFILE '/var/lib/mysql-files/COMMUTATORS_$current_date.txt'
 FIELDS TERMINATED BY ';' 
 OPTIONALLY ENCLOSED BY ''

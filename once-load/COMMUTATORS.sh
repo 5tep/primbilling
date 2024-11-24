@@ -44,7 +44,10 @@ SELECT
     '' AS BUILDING,                        -- Статическое значение для здания
     '' AS BUILD_SECT,                    -- Статическое значение для секции здания
     '' AS APARTMENT,                        -- Пустое значение для квартиры
-    d.unstruct_info AS UNSTRUCT_INFO,                    -- Пустое значение для дополнительной информации
+    E WHEN d.unstruct_info = ''
+      THEN d.address 
+      ELSE d.unstruct_info
+      END AS UNSTRUCT_INFO,                    -- Пустое значение для дополнительной информации
     '' AS SWITCH_SIGN,                       
     6 AS REGION_ID                        -- Статическое значение для региона
 INTO OUTFILE '/var/lib/mysql-files/COMMUTATORS_$current_date.txt'

@@ -29,7 +29,7 @@ SELECT
     '2022-03-01 00:00:00' AS BEGIN_TIME,
     '2049-12-31 23:59:59' AS END_TIME,        
     6 AS REGION_ID
-INTO OUTFILE '/home/boss/COPM/files/IP_PLAN_$current_date.txt'
+INTO OUTFILE '/var/lib/mysql-files/IP_PLAN_$current_date.txt'
 FIELDS TERMINATED BY ';' 
 OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'

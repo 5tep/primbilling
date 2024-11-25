@@ -17,7 +17,7 @@ SELECT
     '2049-12-31 23:59:00' AS END_TIME,
     name AS DESCRIPTION,
     6 AS REGION_ID    
-INTO OUTFILE '/home/boss/COPM/files/PAY_TYPE_$current_date.txt'
+INTO OUTFILE '/home/name/COPM/files/PAY_TYPE_$current_date.txt'
 FIELDS TERMINATED BY ';' 
 OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'

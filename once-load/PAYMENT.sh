@@ -87,7 +87,7 @@ SELECT
     '' AS APARTMENT,  -- Пустое поле
     'Российская Федерация' AS UNSTRUCT_INFO,  -- Пустое поле
     6 AS REGION_ID  -- Пример статического значения
-INTO OUTFILE '/home/boss/COPM/files/PAYMENT_$current_date.txt'
+INTO OUTFILE '/var/lib/mysql-files/PAYMENT_$current_date.txt'
 FIELDS TERMINATED BY ';' 
 OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'

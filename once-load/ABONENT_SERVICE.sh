@@ -18,7 +18,7 @@ SELECT
     u.id AS ABONENT_ID, 
     6 AS REGION_ID, 
     s.id AS ID, 
-    s.datetime_start AS BEGIN_TIME, 
+    CONCAT(s.datetime_start, ' 00:00:00') AS BEGIN_TIME, 
     '2049-12-31 23:59:00' AS END_TIME, 
     s.summa AS PARAMETER, 
     u.id AS INTERNAL_ID1, 

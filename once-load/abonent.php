@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 
-$db = mysqli_connect("localhost", "bitfan", "***************", "prim_billing");
+$db = mysqli_connect("localhost", "bitfan", "ym8tRy286S1T5p[F", "prim_billing");
 $Query = "SELECT 
     'ID', 'REGION_ID', 'CONTRACT_DATE', 'CONTRACT', 'ACTUAL_FROM', 'ACTUAL_TO', 'ABONENT_TYPE', 
     'NAME_INFO_TYPE', 'FAMILY_NAME', 'GIVEN_NAME', 'INITIAL_NAME', 'UNSTRUCT_NAME', 'BIRTH_DATE', 

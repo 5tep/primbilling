@@ -47,7 +47,7 @@ SELECT DISTINCT
     u.id AS INTERNAL_ID2 -- Поле пустое
 FROM 
    services_used s, cms_operators u
-WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.packet not in (64, 27, 10);"
+WHERE u.id = s.user and s.datetime_stop = '0000-00-00' and s.packet not in (64, 27, 10);";
 $Result = mysqli_query($db, $Query);
 while ($Row = mysqli_fetch_assoc($Result)) {
     $values = array_values($Row);

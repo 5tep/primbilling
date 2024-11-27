@@ -15,7 +15,7 @@ SELECT DISTINCT
     6 AS REGION_ID, -- Статическое значение региона
     CONCAT(s.datetime_start, ' 00:00:00') AS CONTRACT_DATE, -- Преобразование UNIX времени в читаемый формат
     u.login AS CONTRACT,
-    s.datetime_start AS ACTUAL_FROM, -- Дата заключения контракта
+    CONCAT(s.datetime_start, ' 00:00:00') AS ACTUAL_FROM, -- Дата заключения контракта
     '2049-12-31 23:59:59' AS ACTUAL_TO, -- Статическая дата окончания
     CASE 
         WHEN s.packet = 10 THEN 43

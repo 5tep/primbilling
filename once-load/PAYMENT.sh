@@ -93,7 +93,7 @@ OPTIONALLY ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 FROM 
     money m, money_type mt
-WHERE m.type = mt.name AND mt.active = 1;
+WHERE m.type = mt.name AND mt.active = 1 AND m.type = 'Пополнение счета';
 " > /var/lib/mysql-files/query.sql
 
 # Выполнение завроса в базе данных

@@ -25,7 +25,14 @@ SELECT
     '' AS MIN, -- Поле пустое
     '' AS ESN, -- Поле пустое
     0 AS EQUIPMENT_TYPE, -- Поле пустое
-    COALESCE(d.mac, '') AS MAC, -- MAC-адрес пользователя, если он есть
+    UPPER(CONCAT(
+        	SUBSTRING_INDEX(d.mac, ':', 1),
+        	SUBSTRING_INDEX(SUBSTRING_INDEX(d.mac, ':', 2), ':' ,-1),
+        	SUBSTRING_INDEX(SUBSTRING_INDEX(d.mac, ':', 3), ':' ,-1),
+        	SUBSTRING_INDEX(SUBSTRING_INDEX(d.mac, ':', 4), ':' ,-1),
+        	SUBSTRING_INDEX(SUBSTRING_INDEX(d.mac, ':', 5), ':' ,-1),
+        	SUBSTRING_INDEX(SUBSTRING_INDEX(d.mac, ':', 6), ':' ,-1)
+    	)) AS MAC, -- MAC-адрес пользователя, если он есть
     '' AS VPI, -- Поле пустое
     '' AS VCI, -- Поле пустое
     u.login AS LOGIN, -- Логин пользователя
@@ -35,7 +42,10 @@ SELECT
     '' AS RESERVED, -- Поле пустое
     '' AS ORIGINATOR_NAME, -- Поле пустое
     '' AS IP_TYPE, -- Поле пустое
-    h.ip AS IPV4, -- Преобразование IP-адреса из формата INT в строку
+    CONCAT(LPAD(HEX(SUBSTRING_INDEX(h.ip, '.', 1)*1), 2, 0),
+    	LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 2), '.', -1)*1), 2, 0),
+    	LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 3), '.', 3), '.', -1)*1), 2, 0),
+    	LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 4), '.', 4), '.', 4), '.', -1)*1), 2, 0)) AS IPV4, -- Преобразование IP-адреса из формата INT в строку
     '' AS IPV6, -- Поле пустое
     '' AS IP_MASK_TYPE, -- Поле пустое
     '' AS IPV4_MASK, -- Поле пустое
@@ -61,7 +71,10 @@ SELECT
     '' AS LOC_LONGITUDE, -- Поле пустое
     '' AS LOC_PROJECTION_TYPE, -- Поле пустое
     '' AS LOC_IP_TYPE, -- Поле пустое
-    h.ip AS LOC_IPV4, -- Используем IP пользователя для LOC_IPV4
+    CONCAT(LPAD(HEX(SUBSTRING_INDEX(h.ip, '.', 1)*1), 2, 0),
+    	LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 2), '.', -1)*1), 2, 0),
+    	LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 3), '.', 3), '.', -1)*1), 2, 0),
+    	LPAD(HEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(h.ip, '.', 4), '.', 4), '.', 4), '.', -1)*1), 2, 0)) AS LOC_IPV4, -- Используем IP пользователя для LOC_IPV4
     '' AS LOC_IPV6, -- Поле пустое
     '' AS LOC_IP_PORT -- Поле пустое
 INTO OUTFILE '/var/lib/mysql-files/ABONENT_IDENT_$current_date.txt'
